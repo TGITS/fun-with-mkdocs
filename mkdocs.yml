@@ -1,0 +1,3 @@
+site_name: Fun with Mkdocs !
+theme:
+  name: material
