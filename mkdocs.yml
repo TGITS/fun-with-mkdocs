@@ -1,3 +1,20 @@
 site_name: Fun with Mkdocs !
+
 theme:
   name: material
+  language: en # language of the site
+  features:
+    - navigation.tabs # To have tabs instead of links
+    - navigation.tabs.sticky # So have the tabs always present at the top of the page, event when you scroll down
+    - navigation.tracking # the url evolves with the scrolling
+    - toc.integrate # to have a toc on the left
+    - navigation.top # to have a shorcut to go back on top of the page when we scroll down
+
+nav:
+  - 'Home': 'index.md'
+  - 'Introduction': 'mkdocs-briefly.md'
+  - 'Installation': 'installing-and-running-mkdocs.md'
+
+plugins:
+  - search
+  - offline
