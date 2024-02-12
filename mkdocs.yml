@@ -9,12 +9,39 @@ theme:
     - navigation.tracking # the url evolves with the scrolling
     - toc.integrate # to have a toc on the left
     - navigation.top # to have a shorcut to go back on top of the page when we scroll down
+    - content.code.copy # to have copy button with code blocks
+    - content.code.annotate # to be able to annotate in code blocks
 
 nav:
   - 'Home': 'index.md'
   - 'Introduction': 'mkdocs-briefly.md'
   - 'Installation': 'installing-and-running-mkdocs.md'
+  - 'Configuration example': 'configuration_example.md'
+
 
 plugins:
   - search
   - offline
+
+markdown_extensions:
+  # Required for multiple other extensions
+  - attr_list # required for annotations, icons and emoji
+  - md_in_html # required for icons and emoji
+  - pymdownx.superfences # required for admonitions and code blocks
+  # For admonitions
+  - admonition
+  - pymdownx.details
+  - pymdownx.superfences
+  # For using a large database of icons and emojis
+  - pymdownx.emoji:
+      emoji_index: !!python/name:material.extensions.emoji.twemoji
+      emoji_generator: !!python/name:material.extensions.emoji.to_svg
+  # For code blocks
+  - pymdownx.highlight:
+      anchor_linenums: true
+      line_spans: __span
+      pygments_lang_class: true
+  - pymdownx.inlinehilite
+  - pymdownx.snippets
+  
+
