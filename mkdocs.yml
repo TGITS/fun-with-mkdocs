@@ -18,7 +18,6 @@ nav:
   - 'Installation': 'installing-and-running-mkdocs.md'
   - 'Configuration example': 'configuration_example.md'
 
-
 plugins:
   - search
   - offline
@@ -31,7 +30,12 @@ markdown_extensions:
   # For admonitions
   - admonition
   - pymdownx.details
-  - pymdownx.superfences
+  - pymdownx.superfences: # Required for admonitions, diagrams and code blocks
+      # For using mermaid for inline diagrams
+      custom_fences:
+        - name: mermaid
+          class: mermaid
+          format: !!python/name:pymdownx.superfences.fence_code_format
   # For using a large database of icons and emojis
   - pymdownx.emoji:
       emoji_index: !!python/name:material.extensions.emoji.twemoji
@@ -43,5 +47,11 @@ markdown_extensions:
       pygments_lang_class: true
   - pymdownx.inlinehilite
   - pymdownx.snippets
-  
+  # For tables
+  - tables
 
+extra_javascript:
+  # For sortable tables
+  # You need to have some javascript code in docs/javascripts/tablesort.js
+  - https://unpkg.com/tablesort@5.3.0/dist/tablesort.min.js
+  - javascripts/tablesort.js
