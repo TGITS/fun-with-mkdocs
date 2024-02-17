@@ -106,17 +106,47 @@ frequencies.entrySet().iterator().forEachRemaining(System.out::println);
 
 ## Diagrams with Mermaid examples
 
-Hereafter an example with a sequence diagram but any diagram supporrted by [mermaid](https://mermaid.js.org/) is possible.
+Hereafter an example with a class and a sequence diagram (inspired by the [Visitor Pattern](https://refactoring.guru/design-patterns/visitor)) but any diagram supported by [mermaid](https://mermaid.js.org/) is possible.
 
-``` mermaid
+```mermaid
+classDiagram
+    class Visitor{
+        +visit(ConcreteElementA element)
+        +visit(ConcreteElementB element)
+    }
+
+    <<interface>> Visitor
+
+    class ConcreteVisitorA {
+        +visit(ConcreteElementA element)
+        +visit(ConcreteElementB element)
+    }
+
+    Visitor <|.. ConcreteVisitorA
+
+    class Element{
+        +accept(Visitor visitor)
+    }
+
+    <<interface>> Element
+
+    class ConcreteElementA{
+        +accept(Visitor visitor)
+    }
+
+    class ConcreteElementB{
+        +accept(Visitor visitor)
+    }
+
+    Element <.. ConcreteElementA
+    Element <.. ConcreteElementB
+
+```
+
+```mermaid
 sequenceDiagram
-  autonumber
-  Alice->>John: Hello John, how are you?
-  loop Healthcheck
-      John->>John: Fight against hypochondria
-  end
-  Note right of John: Rational thoughts!
-  John-->>Alice: Great!
-  John->>Bob: How about you?
-  Bob-->>John: Jolly good!
+  client->>concreteElementA: accept(visitor)
+  concreteElementA->>visitor: visit(concreteElementA)
+  client->>concreteElementB: accept(visitor)
+  concreteElementB->>visitor: visit(concreteElementA)
 ```
