@@ -4,7 +4,7 @@ Example project that demonstrate the use of mkdocs and material for mkdocs
 
 ## Using with Python
 
-If you already have Python installed on yoyr system or you prefer use mkdocs withuout using Docker, the recommended steps are the following :
+If you already have Python installed on your system or you prefer using mkdocs without using Docker, the recommended steps are the following :
 
 * Create a virtual environment with `venv` (it is bundled with Python) before installing **MkDocs** :
   * In a shell, at the root of the directory in which you want to install mkdocs, type : `python -m venv venv --prompt="mkdocs"`
